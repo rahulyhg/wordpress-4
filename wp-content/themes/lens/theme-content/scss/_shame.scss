@@ -1,0 +1,477 @@
+#page {
+    background: $dark;
+        
+    @include media(from hand) {
+        background: none;
+        position: absolute;
+        top: 0; left: 0;
+        width: 100%;
+        height: 100%;
+    }
+}
+
+html {
+    min-height: 0;
+
+    //prevent the scrollbar from appearing on fullscreen slider galleries
+    &.is--gallery-fullscreen{
+        overflow-y: hidden;
+    }
+
+
+    //prevent flicker caused by the scrollbar appearing/disappearing when opening/closing magnigic popup
+    &.is--gallery-grid{
+        overflow-y: visible;
+    }
+
+	@include media(to lap) {
+		overflow-y: scroll;
+	}
+}
+
+// .admin-bar {
+
+//     .content {
+//         margin-top: 28px;
+//     }
+
+//     @include media(from hand) {
+//         .header, .content {
+//             padding-top: 28px;
+//             margin-top: 0;
+//         }
+//     }
+// }
+
+/* prevent flicker on ios */
+.content123, .header, .header__inner-wrap {
+    @include backface-visibility(hidden);
+    // @include perspective(1000px);
+}
+
+.wrapper {
+    position: relative;
+}
+
+/* the header stays over the content */
+@include media(to hand) {
+    .header     {z-index: 100;}
+    .content    {z-index: 200;}
+}
+
+/**
+*
+* There's a 1px vertical line in the grid that seems to appear because of
+* bad computation of widths (I guess) :D
+*
+**/
+.mosaic__item .image__item-link{
+    width: 100.5%;
+}
+
+/**
+ * There's 1px horizontal on the page when there's no sidebar and the page goes
+ * full width, making the horizontal scroll bar appear
+ */
+ 
+.full-width .site-content{
+    overflow: hidden;
+}
+
+
+
+
+
+/*---------------------------------------------------*\
+               $SINGLE GALLERY FULLWIDTH
+\*---------------------------------------------------*/
+
+/* Asa nu :D */
+
+.single-gallery-fullscreen .content {
+    margin-left: 0;
+}
+
+.single-gallery-fullwidth,
+.single-gallery-fullscreen {
+
+    @include media(from hand) {
+        #page, .wrapper, .content, #main, #primary, #content, .post {
+            height: 100%;
+        }
+
+        .content {
+            position: relative;
+        }
+    }
+}
+
+
+
+/* */
+.featured-image-wrapper {
+    position: relative;
+}
+
+/*----------------------------------------------*\
+               $SINGLE PROJECT FULL
+\*----------------------------------------------*/
+
+.featured-image{
+    position: relative;
+}
+
+.gallery{
+    width: 100%;
+    overflow: hidden;
+    margin: 0;
+}
+
+.gallery--archive{
+    margin-bottom: 0;
+}
+
+    .gallery-item{
+        display: block;
+        height: 100%;
+
+        img{
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+    }
+
+.rsSlide .gallery-item{
+    height: auto;
+}
+
+.single-gallery-fullscreen, .single-gallery-fullwidth {
+
+    .pixslider {
+        height: 100% !important;
+    }
+
+    #page {
+        position: absolute;
+        top: 0; left: 0;
+        bottom: 0;
+        width: 100%;
+    }
+
+    @include media(to hand) {
+
+        .content { 
+            position: absolute;
+            @include rem(top, 3 * $base-spacing-unit);
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            height: auto;
+        }
+    }
+}
+
+
+
+
+
+.gallery--fullscreen{
+
+    @include media(from hand) {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+
+        &, .rsSlide {
+            height: 100% !important;
+        }
+    }
+
+    .gallery-item{
+
+        img{
+            @include media(from hand) {
+                @include opacity(0);
+            }
+        }
+    }
+
+    .gallery-icon{
+
+        @include media(to hand) {
+            background: none !important;
+        }
+        
+        @include media(from hand) {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: center no-repeat;            
+            @include background-size(cover); 
+        }
+    }
+}
+
+
+
+
+/**
+ * When it starts, the Magnific Popup pust overflow: hidden;
+ * on <html/>, rule that already exists, but removes it on closing,
+ * making the scroll bar appear.
+ */
+
+// overflow scroll makes the html tag always have a scrollbar
+// this way we prevent the flickering from the magnific pop up
+html.nicescroll {
+    overflow: hidden !important; 
+    padding-right: 0 !important; 
+}
+
+.mfp-counter{
+    @include rem(top, 10px);
+
+    .mfp-figure--video &{
+        top: 0;
+    }
+}
+
+.bleed--left {
+    @include rem(margin-left, -2 * $base-spacing-unit);
+}
+
+.featured-image img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+// royal slider 1px spacing shit
+// .gallery-icon {
+//     width: 102% !important;
+//     left: -1% !important;
+// }
+
+// that fullscreen royal slider needs some help
+@include media(from hand) {
+
+    /*body*/.single-gallery-fullwidth,
+    /*body*/.single-gallery-fullscreen {
+        .js-pixslider {
+            height: 100% !important;
+        }
+    }
+}
+
+// Magnific Popup
+// 
+// When an image is bigger than the viewport, limit it to 90%
+// to prevent the scrollbar from showing.
+// Also, taking care of the bottom bar positioning(controls and title)
+// and removing the animation
+
+.mfp-counter .gallery-control {
+    right: 0;
+}
+img.mfp-img{
+    @include rem(padding-bottom, 5*$base-spacing-unit);
+    //max-height: 90% !important;
+}
+
+.mfp-figure--video .mfp-bottom-bar {
+    top: 100%;
+    margin-top: 0;
+}
+
+.mfp-figure:after{
+    background: none;
+    box-shadow: none;
+}
+
+@include media(to hand) {
+    .mfp-counter{
+        position: relative;
+    }
+}
+
+.mfp-bg{
+    position: fixed;
+}
+
+.mfp-bottom-bar{
+    @include rem(bottom, 2.5*$base-spacing-unit);
+    @include rem(height, 3*$base-spacing-unit);
+    top: auto;
+
+    .gallery-control{
+        -webkit-animation: none !important;
+            -ms-animation: none !important;
+             -o-animation: none !important;
+                animation: none !important;
+        -webkit-opacity: 1 !important;
+            -ms-opacity: 1 !important;
+             -o-opacity: 1 !important;
+                opacity: 1 !important;
+    }
+}
+
+// remove tap highlight
+// or change it :D
+* {
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+
+// flicker
+.content {
+    // @include backface-visibility(hidden); - causes the filter button
+    // not to be fixed on firefox
+    // @include perspective(1000px);
+    word-break: break-word;
+}
+
+.show-on-ie8 {
+    display: none;
+
+    .lt-ie9 & {
+        display: block;
+    }
+}
+
+.entry__content {
+    img {
+        max-width: 100%;
+        height: auto;
+    }
+}
+
+blockquote p:before{
+    content: none;
+}
+
+
+blockquote p:after{
+    content: none;
+}
+
+// nicescroll
+
+.nicescroll-rails > div {
+    // border-radius: 0 !important;
+
+    .header & {
+        background: #777 !important;
+    }
+}
+
+.featured-image .pixslider {
+    width: 100%;
+    // @include rem(height, 600px);
+
+    img {
+        max-width: none;
+    }
+}
+
+a.site-home-link {
+    color: $accent-color;
+}
+
+
+
+
+
+/*----------------------------------------------*\
+               $IFRAMES
+\*----------------------------------------------*/
+iframe {
+    border:none;
+}
+
+
+
+
+
+/*----------------------------------------*\
+    $GALLERY POST FORMAT
+\*----------------------------------------*/
+
+.single-gallery-fullscreen, .single-gallery-fullwidth, .single-portfolio-fullwidth {
+
+    .pixslider {
+        background-color: black;
+    }
+}
+
+
+
+
+
+/*----------------------------------------*\
+    $ANDROID F&*^)#G NATIVE BROWSER
+\*----------------------------------------*/
+.android-browser .menu-link{
+    @include rem(padding, $half-spacing-unit 0);
+    @include rem(font-size, 20px);
+}
+
+
+
+
+// The padding-bottom was added to make sure that the content
+// won't touch the bottom of the page
+// The following removes content padding-bottom on pages that do not need it
+@include media(from hand) {
+    .blog,
+    .portfolio-archive, 
+    .single-gallery-fullwidth, 
+    .single-gallery-fullscreen,
+    .single-gallery-masonry
+    {
+        .content {
+            padding-bottom: 0;
+        }
+    }
+}
+
+.mfp-content .mfp-iframe{
+    z-index: 1500;
+}
+
+
+// Ensure that the header does not overlap 
+// the video controls while the video is playing
+.video-active .header{
+    height: auto;
+    background: none;
+}
+
+.single-slide .rsContainer{
+    cursor: default;
+}
+
+
+// Ensure that Magnigic Popup appears over
+// Nicescroll rail
+
+.mfp-wrap{
+    z-index: 9999;
+}
+
+.nicescroll-rails{
+    z-index: 9998 !important;
+}
+
+// :-webkit-full-screen-ancestor:not(iframe){
+//     -webkit-animation: none !important;
+//     -moz-animation: none !important;
+//     -o-animation: none !important;
+//     animation: none !important;
+
+//     @include backface-visibility(visible);
+// }
+
+.blog #page{
+  background: #f5f5f5;
+}

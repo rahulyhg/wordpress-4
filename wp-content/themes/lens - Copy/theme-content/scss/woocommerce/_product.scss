@@ -1,0 +1,141 @@
+/*----------------------------------------*\
+    $IMAGES
+\*----------------------------------------*/
+.single-product .images {
+    a {
+        margin-bottom:24px;
+        display:block;
+    }
+    img {
+        display:block;
+    }
+}
+
+
+
+
+/*----------------------------------------*\
+    $ORDER FORM
+\*----------------------------------------*/
+
+.single-product .form-cart {
+    margin-bottom: 24px;
+}
+
+.single-product__price{
+    display: block;
+    color: #222223;
+    
+    font-family: "Josefin Slab", serif;
+    @include font-size(26px);
+    font-weight: bold;
+}
+
+.shop__label{
+    font-style: italic;
+    @include font-size(14px);
+}
+
+.shop__select, .shop__input--text{
+    padding: 6px;
+    @include font-size(16px);
+}
+
+.shopping--single-product #product-quantity{
+    width: 2*24px;
+}
+
+.reset_variations {
+	margin-top: 23px;
+}
+
+.single-product .entry__meta-box {
+    margin-right:0;
+}
+
+.single-product .meta-box--categories a{
+    display: inline-block;
+    text-transform:capitalize;
+}
+
+@include media(from lap) {
+    .button-sale--single{
+        position: absolute;
+        top: 48px;
+        left: 48px;
+    }
+}
+
+.single-product{
+
+    .project--sidebar__images{
+        position: relative;
+    }
+
+    .woocommerce-message{
+        position: relative;
+
+        i {
+            float:left;
+        }
+
+        .btn{
+            display:none;
+            position: absolute;
+            top: 3px;
+            right: 3px;
+            height: 36px;
+            line-height: 2.65;
+
+            &:hover{
+                text-shadow: none;
+            }
+        }
+
+        p{
+            margin: 12px 5px;
+        }
+    }
+
+    label{
+        display: block !important;;
+    }
+
+    @include media(to hand) {
+        .variations .span-6{
+            width: 100%;
+            margin-bottom: $base-spacing-unit;
+        }
+    }
+}
+
+.woocommerce .single-product-stock{
+    position: absolute;
+    right: 24px;
+    bottom: 24px;
+}
+
+.single-product .single-product-stock{
+    position: static;
+    display: block;
+    margin-bottom: 24px;
+
+    font-family: "Josefin Slab", serif;
+    font-weight: bold;
+
+
+    &.out-of-stock{
+        text-decoration: underline;
+    }
+
+}
+
+.wc-forward a:after, .wc-forward:after{
+    content: none;
+}
+
+.wc-forward a, .wc-forward{
+    background: none;
+    border: 0;
+    @extend .btn;
+}

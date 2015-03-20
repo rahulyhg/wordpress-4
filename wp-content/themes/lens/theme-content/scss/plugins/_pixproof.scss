@@ -1,0 +1,278 @@
+/*----------------------------------------*\
+*   $PIXPROOF PLUGIN STYLING
+\*----------------------------------------*/
+/*
+	<div class="pixproof-lens-gallery masonry masonry--gallery">
+		<div class="masonry__item proof-photo selected">
+			<div class="background-container">
+				<span class="image__item-link">
+					<div class="image__item-wrapper"> 	 <img> 		</div>
+					<div class="image__item-meta">
+						<ul class="actions-nav">
+							<li class="item--action"> 	 Zoom 		</li>
+							<li class="item--separator"> Separator 	</li>
+							<li class="item--action"> 	 Select 	</li>
+						</ul>
+					</div>
+				</span>
+				<span class="proof-photo__status"></span>
+				<span class="proof-photo__id"></span>
+			</div>
+		</div>
+	</div>
+ */
+
+
+
+// Overwrite the default content width
+.single-proof_gallery .page-main {
+	max-width: 100%;
+
+	.entry__header, 
+	.entry__content > *:not(.pixproof-lens-gallery),
+	.entry__body .comments-area, .entry__body > hr, .entry__body .comment-respond {
+		max-width: 890px;
+	}
+}
+
+//PixProof Data
+.pixproof-data {
+	.entry__meta-box {
+		.meta-box__box-content {
+			font-size:16px;
+			font-weight: bold;
+			color: $dark;
+		}
+	}
+}
+
+// Masonry Images Container
+.pixproof-lens-gallery{
+	&.masonry--gallery {
+		padding: 0;
+		margin: 0 -6px;
+		margin-bottom: $base-spacing-unit;
+		background-color: transparent !important;
+		font-family: $sans-serif-font-family;
+	}
+	.masonry__item-image.mosaic__item{	
+		margin: 0;
+	}
+	
+	// Masonry Item
+	.proof-photo{
+		border: 6px solid transparent;
+		color: white;
+
+		.background-container{
+			padding: 4px;
+			padding-bottom: 0;
+			background: white;
+
+			@include transition(all .2s linear);
+
+			.image__item-link {
+				width: 100%;
+			}
+		}
+
+		.image__item-meta {
+			background: rgba(0,0,0,0.5);
+		}
+
+
+		hr.separator{
+			margin: 0 auto;
+			max-width: 80%;
+			border-color: white;
+		}
+
+		&:hover, &.scrooled_from_comments, &.selected{
+			background: none;
+
+			.background-container{
+				@include transition(all .2s linear);
+			}
+
+			.proof-photo__id{
+				// color: white;
+			}	
+		}
+
+		&:hover {
+			.background-container {
+				background: rgba(0,0,0,0.35); 
+			}
+	        .separator {
+	            margin-top: 0;
+	            margin-bottom: 0;
+	        }			
+
+	        .item--action .flexbox__item{
+	        	padding: 10px 0;
+	        }
+		}
+
+		&.selected {
+			.background-container {
+				background: $accent-color;
+			}
+		}
+		&.scrooled_from_comments {
+			.background-container {
+				background: $accent-color;
+			}
+		}
+	}
+	.proof-photo__status {
+		& {
+			top: auto;
+			bottom: 0;
+			right: 3px;
+		}
+
+		span.spinner {
+			border-top-color: $dark;
+		}
+
+		span.ticker {
+			background: none;
+			color: $dark;
+		}
+	}
+
+	.proof-photo__id {
+		font-size: 13px;
+		color: $dark;
+	}
+
+
+	.touch & {
+		.mosaic__meta{
+			@include opacity(1);
+			background: rgba(0, 0, 0, 0.5);
+		}
+
+        .separator {
+            max-width:80%;
+            margin-top: 0;
+            margin-bottom: 0;
+        }		
+	}
+
+	.lt-ie9 & a{
+		border: 0;
+	}
+} 
+
+.lt-ie9 .proof-photo__status span.ticker{
+	display: none;
+}
+
+.actions-nav{
+	height: 100%;
+	margin: 0;
+
+	li:first-child{
+		.flexbox__item{
+			vertical-align: bottom;
+		}
+	}
+
+	li:last-child{
+		.flexbox__item{
+			vertical-align: top;
+		}
+	}	
+
+	.item--action{
+		height: 45%;
+		font-family: $sans-serif-font-family;
+		font-weight:normal;
+
+		a, .flexbox{
+			height: 100%;
+			color: white;
+			font-size:13px;
+		}
+
+		.flexbox__item{
+			@include transition(all 0.2s ease-out);
+		}
+	}
+
+	.item--separator{
+		height: 10%;
+
+		.flexbox{
+			height: 100%;
+		}
+	}
+}
+
+span.pixproof_photo_ref{
+	margin-left: 6px;
+	margin-right: 6px;
+}
+
+.single-proof_gallery{
+
+	div.mfp-bottom-bar{
+		bottom: 0;
+		margin-top: 0;
+
+		.meta__action--popup{
+			@include font-size(20px);
+		}
+	}
+
+	&.admin-bar .mfp-close{
+		top: 32px;
+	}
+}
+
+/*
+ * Comments
+ */
+.comments-area {
+	.bypostauthor > .comment {
+		border-right:0;
+		padding-right:0; 
+	}
+}
+
+/*
+ * Different Grid Breakpoints - item max width: 250px 
+ */
+@media screen and (max-width: 579px) {
+    .pixproof-lens-gallery.masonry--gallery {  
+	    &:before {
+	    	content: '2 .span.span-6' !important;
+	    } 
+	}
+}
+
+@media screen and (min-width: 580px) and (max-width: 1299px) {
+	.pixproof-lens-gallery.masonry--gallery {  
+	    &:before {
+	    	content: '3 .span.span-4' !important;
+	    }
+    } 
+}
+
+@media screen and (min-width: 1300px) and (max-width: 1700px) {
+	.pixproof-lens-gallery.masonry--gallery {  
+	    &:before {
+	    	content: '4 .span.span-3' !important;
+	    }
+    } 
+}
+
+
+@media screen and (min-width: 1701px) {
+    .single-proof_gallery .pixproof-lens-gallery.masonry--gallery {  
+        &:before {
+        	content: '6 .span.span-2' !important;
+        }      
+    }
+}

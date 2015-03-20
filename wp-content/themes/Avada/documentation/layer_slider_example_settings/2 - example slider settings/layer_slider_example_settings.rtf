@@ -1,0 +1,345 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1187
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\margl1440\margr1440\vieww23080\viewh21760\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\f0\b\fs28 \cf0 \ul \ulc0 Example Settings for Layers Slider If You Are Using The "Avada" Skin - Please Read\ulnone \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640
+
+\b0\fs24 \cf0 \
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640
+
+\b \cf0 You only need to read this information below if you are using the "avada" skin and have had issues positing your sublayers in the same spot on different screens. If you have not had issues with that, then there is no need to read below :)\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640
+
+\b0 \cf0 \
+The "avada" skin shows a full width slider, meaning it extends the full width of your browser window. When you have a full width slider skin, along with multiple sublayers, the layer slider has to be told to always center your sublayers within the designated site width, which is 940px for this theme. To correctly do this, you need to add HTML markup along with in-line styling to your sublayers so they are positioned in the same spot on any screen (excluding mobile screens).  If you do not do this, then your sublayers may be in different spots on different resolutions. \
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640
+
+\b \cf0 If you do not want to add HTML/CSS markup to your sublayers, then please use one of the layer sliders pre-defined skins, which are: defaultskin, lightskin, darkskin. Using any one of those pre-defined skins will eliminate the need to add add HTML markup along with in-line styling to your sublayers.\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640
+
+\b0 \cf0 First off, if you are using the "avada" skin, please make sure that you have your slider set to 100% width and force responsive is turned off. Make sure you have the "avada" skin set, and that animate first layer is set to enabled. \
+\
+Below are example settings to show you exactly how to position your sublayers. Some general rules are that you always need to set sublayers as a div; you always need to set the style to width: 940px; and you always need to make sure you have 50% set for the left placement.  Other than that, all of your content needs to be set in the HTML field with inline styling. The style values you need to pay attention to are the positioning values, they will allow you to position content anywhere within your 940px content area. If you want something lining up on the left side, the right side or in the middle somewhere then you need to add the correct style positioning to that sublayer. You will need to know some HTML and CSS. But don't worry, we show you how to do this below.\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+\cf0 \
+Below are 5 different settings, the first is the main background layer, and then there are 4 sublayers. Please take the 3 images that come with this download (in the 3-images folder) and upload them to your wordrpess admin. Please note, the image source on the settings below needs to reflect your individual images that you uploaded. Each image you upload gets its own link in wordpress, simply copy that link and past it in place of the "your source here". Some of the fields are left blank, and some use the default settings. \
+\
+Make sure you have 
+\b "ADVANCED OPTIONS" 
+\b0 selected on tour sublayers so you can see all of the field settings.\
+\
+
+\b\fs30 \
+Layer #1 - "background.jpg"\
+
+\b0\fs24 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b \cf0 Title:
+\b0  Layer #1\
+
+\b Background: 
+\b0 "your source here"\
+
+\b SlideDirection:
+\b0  right\
+
+\b SlideDelay:
+\b0  4000\
+
+\b DurationIn:
+\b0  1500\
+
+\b DurationOut: 
+\b0 1500\
+
+\b EasingIn: 
+\b0 easeInOutQuint\
+
+\b EasingOut:
+\b0  easeInOutQuint\
+
+\b DelayIn: 
+\b0 0\
+
+\b Delay Out:
+\b0  0\
+\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b\fs30 \cf0 Sublayer #1 - "guy.png"\
+
+\b0\fs24 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b \cf0 Type:
+\b0  div\
+
+\b HTML: 
+\b0 <img style="position: absolute; left: 400px;" src="your source here" />\
+
+\b Style: 
+\b0 width: 940px;\
+
+\b ID:
+\b0 \
+
+\b Top:
+\b0  10\
+
+\b Left:
+\b0  50%\
+
+\b Image:
+\b0 \
+
+\b Link:
+\b0 \
+
+\b Target:
+\b0  _self\
+
+\b P.Level:
+\b0  2\
+
+\b SlideDirection:
+\b0  top\
+
+\b SlideOutDirection:
+\b0  top\
+
+\b ParallaxIn: 
+\b0 .45\
+
+\b ParralaxOut: 
+\b0 .45\
+
+\b DurationIn:
+\b0  1500\
+
+\b DurationOut: 
+\b0 1500\
+
+\b EasingIn: 
+\b0 easeInOutElastic\
+
+\b EasingOut:
+\b0  easeInOutElastic\
+
+\b DelayIn: 
+\b0 500\
+
+\b DelayOut:
+\b0  0\
+\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b\fs30 \cf0 Sublayer #2 - this is a regular text layer, no image\
+
+\b0\fs24 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b \cf0 Type:
+\b0  div\
+
+\b HTML: 
+\b0 <p style="font-size: 26pt; color: #333333; font-family: museoslab500regular; line-height: 115%; text-align: left;">What Could Be<br>Better Than Avada?</p>\
+
+\b Style: 
+\b0 width: 940px;\
+
+\b ID:
+\b0 \
+
+\b Top:
+\b0  85\
+
+\b Left:
+\b0  50%\
+
+\b Image:
+\b0 \
+
+\b Link:
+\b0 \
+
+\b Target:
+\b0  _self\
+
+\b P.Level:
+\b0  2\
+
+\b SlideDirection:
+\b0  left\
+
+\b SlideOutDirection:
+\b0  left\
+
+\b ParallaxIn: 
+\b0 .45\
+
+\b ParralaxOut: 
+\b0 .45\
+
+\b DurationIn:
+\b0  1500\
+
+\b DurationOut: 
+\b0 1500\
+
+\b EasingIn: 
+\b0 easeInOutQuint\
+
+\b EasingOut:
+\b0  easeInOutQuint\
+
+\b DelayIn: 
+\b0 1000\
+
+\b DelayOut:
+\b0  0\
+\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b\fs30 \cf0 Sublayer #3 - "mobile.png"\
+
+\b0\fs24 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b \cf0 Type:
+\b0  div\
+
+\b HTML: 
+\b0 <img style="position: absolute; left: 400px;" src="your source here" />\
+
+\b Style: 
+\b0 width: 940px;\
+
+\b ID:
+\b0 \
+
+\b Top:
+\b0  0\
+
+\b Left:
+\b0  50%\
+
+\b Image:
+\b0 \
+
+\b Link:
+\b0 \
+
+\b Target:
+\b0  _self\
+
+\b P.Level:
+\b0  2\
+
+\b SlideDirection:
+\b0  top\
+
+\b SlideOutDirection:
+\b0  top\
+
+\b ParallaxIn: 
+\b0 .45\
+
+\b ParralaxOut: 
+\b0 .45\
+
+\b DurationIn:
+\b0  1500\
+
+\b DurationOut: 
+\b0 1500\
+
+\b EasingIn: 
+\b0 easeInOutElastic\
+
+\b EasingOut:
+\b0  easeInOutElastic\
+
+\b DelayIn: 
+\b0 1500\
+
+\b DelayOut:
+\b0  0\
+\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b\fs30 \cf0 Sublayer #4 - this is for one of our buttons\
+
+\b0\fs24 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\b \cf0 Type:
+\b0  div\
+
+\b HTML: 
+\b0 <a href="your link here" style="position: absolute; left: 0px;" class="continue button large green">Purchase Now</a>\
+
+\b Style: 
+\b0 width: 940px;\
+
+\b ID:
+\b0 \
+
+\b Top:
+\b0  275\
+
+\b Left:
+\b0  50%\
+
+\b Image:
+\b0 \
+
+\b Link:
+\b0 \
+
+\b Target:
+\b0  _self\
+
+\b P.Level:
+\b0  2\
+
+\b SlideDirection:
+\b0  bottom\
+
+\b SlideOutDirection:
+\b0  bottom\
+
+\b ParallaxIn: 
+\b0 .45\
+
+\b ParralaxOut: 
+\b0 .45\
+
+\b DurationIn:
+\b0  1500\
+
+\b DurationOut: 
+\b0 1500\
+
+\b EasingIn: 
+\b0 easeInOutQuint\
+
+\b EasingOut:
+\b0  easeInOutQuint\
+
+\b DelayIn: 
+\b0 2000\
+
+\b DelayOut:
+\b0  0\
+}

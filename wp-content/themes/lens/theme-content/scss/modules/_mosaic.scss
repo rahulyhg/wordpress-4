@@ -1,0 +1,313 @@
+/*----------------------------------------*\
+               PORTFOLIO GRID
+\*----------------------------------------*/
+
+/* @todo:
+ * create grid-something module in layout and make .mosaic extend it
+ * deoarece pentru ca fiindca din cauza ca are cateva stiluri specifice
+ */
+.mosaic {
+    @extend .cf;
+    position: relative;
+    @include transform(translate3d(0,0,0));
+
+}
+
+.image_item-cell > i {
+        font-size: 2em;
+        padding-right: 0;
+}
+
+    .mosaic__item {
+        // opacity: 0; //
+        display: none; //
+        overflow: hidden;
+        float: left;
+        position: relative;
+
+		// some horizontal white line appearing
+		//at certain screen sizes
+		margin-bottom: -1px;
+
+        @extend .span-12;
+        @extend .hand-span-6;
+        @extend .lap-span-4;
+        @extend .desk-span-3;            
+
+        .single-lens_gallery &{
+            @extend .span-6;
+            @extend .hand-span-6;
+            @extend .lap-span-4;
+            @extend .desk-span-3;
+            margin-bottom: 0 !important;
+        }
+
+        .image__item-link {
+            @include transform(translateX(-101%));
+
+            .icon-plus {
+                padding-right: 0; 
+                padding-top: 0.1em;
+            }
+        }
+    }
+    
+    .mosaic__item.mosaic__item--portrait{
+        .single-lens_gallery &{
+            @extend .span-6;
+            @extend .hand-span-4;
+            @extend .lap-span-3;
+            @extend .desk-span-2;
+            margin-bottom: 0 !important;
+        }
+
+        .portfolio-archive &, .gallery-archive &{
+            @extend .span-12;
+            @extend .hand-span-4;
+            @extend .lap-span-3;
+            @extend .desk-span-2;
+        }                
+
+        .image__item-wrapper{
+            padding-top: 150%;
+        }
+
+        h1{
+            padding: 0;
+        }
+    }
+
+    .loaded .js--is-loaded.slide-in .image__item-link {
+        -webkit-animation: slide-in .25s bezier(easeOutQuad);
+           -moz-animation: slide-in .25s bezier(easeOutQuad);
+             -o-animation: slide-in .25s bezier(easeOutQuad);
+                animation: slide-in .25s bezier(easeOutQuad);
+        @include transform(none);
+
+        .lt-ie9 & {
+            display: block;
+        }
+    }
+
+    .loaded .js--is-loaded.slide-out .image__item-link {
+        -webkit-animation: slide-out .25s bezier(easeOutQuad);
+           -moz-animation: slide-out .25s bezier(easeOutQuad);
+             -o-animation: slide-out .25s bezier(easeOutQuad);
+                animation: slide-out .25s bezier(easeOutQuad);
+        @include transform(translateX(101%));
+
+        .lt-ie9 & {
+            display: none;
+        }
+    }
+
+    .image_item-table {
+        @include transition(transform .2s .1s ease-out);
+    }
+
+    .no-touch .mosaic__item:hover {
+
+        .image_item-table {
+            @include opacity(1);
+            @include transition(all .2s ease-in);
+        }
+    }
+
+    .image__item-wrapper {
+        position: relative;
+        padding-top: 55%;
+        overflow: hidden;
+        
+        img { 
+            display: block;
+            position: absolute;
+            top: 0; left: 0;
+            width: 101%;
+			max-width: 101%;
+            // opacity: 0;
+			-moz-transform: translateZ(0);
+            @include transition(opacity .3s ease-in-out);
+        }
+    }
+
+    .js--is-loaded img {
+        opacity: 1;
+    }
+
+
+/*
+* Hide Mosaic Items Page-Title block on touch devices
+*/
+.touch {
+    .mosaic .mosaic__item--page-title {
+        display: none !important;
+    }
+
+    // .single-gallery-masonry .image__item-meta{
+    //     display: none;
+    // }
+
+
+    .mosaic .mosaic__item--page-title-mobile {
+        display: block !important;
+    }    
+}
+
+.mosaic__item--page-title-mobile {
+    display: none !important;
+}
+
+
+/*--------------------------------*\
+               FILTER BUTTON
+\*--------------------------------*/
+
+
+
+/*--------------------------------*\
+              PAGINATION
+\*--------------------------------*/
+
+
+.mosaic__pagination {
+	@extend .cf;
+	@include transition(background-color .3s ease-in-out);
+    
+    @include media(from hand){
+        .sticky-button {
+            left: 274px;
+            right: auto;
+        }
+    }
+
+	a {
+		text-decoration: none;
+        @extend .sticky-button__btn;
+
+		&:hover {
+			background-color: #fcfcfc;
+		}
+	}
+    
+	.prev, .next {
+        float: left;
+        margin-right: 2px;
+        padding: 9px 12px !important;
+        font-size: 13px;
+        text-transform: uppercase;
+
+		&.disabled {
+	        background-color:rgba(0,0,0,0.3); 
+            display: none;
+		}
+
+        &:hover {
+            color: $accent-color;
+        }
+	}
+
+	.next {
+		float: right;
+	}
+
+    .loading & {
+        background-color: transparent;
+    }
+}
+
+//hide the pagination when using infinite scrolling
+.inf_scroll {
+	.mosaic__pagination {
+		display: none;
+	}
+}
+
+#infscr-loading {
+	display: none !important;
+}
+
+// Blog Archive Pagination
+.loaded .blog .masonry__pagination {
+    background-color: #f5f5f5;
+}
+.blog .masonry__pagination .sticky-button {
+    position: relative;
+    right: auto;
+    bottom: auto;
+}
+
+/*------------------------------------*\
+               PAGE TITLE
+\*------------------------------------*/
+
+// 600px small 900px hand 1300px lap 1700px desk;
+.mosaic__item--page-title, .mosaic__item--page-title-mobile {
+
+    .image__item-meta, .image_item-table {
+        @include opacity(1);
+    }
+
+    h1 {
+        font-weight:300;
+        margin: 0;
+        text-transform: uppercase;
+
+        @include media(from lap) {
+            @include rem(padding, 0 $half-spacing-unit);
+            @include rem(font-size, 36px);
+        }
+
+        @include media(to lap) {
+            @include rem(font-size, 28px);
+            @include rem(padding, 0 $half-spacing-unit/2);
+        }        
+
+        @include media(to hand) {
+            @include rem(font-size, 22px);
+            @include rem(padding, 0 $half-spacing-unit/2);
+        }
+    }
+}
+
+
+@-webkit-keyframes slide-out {
+    0% {-webkit-transform: none;}
+    100% {-webkit-transform: translateX(101%);}
+}
+
+@-moz-keyframes slide-out {
+    0% {-moz-transform: none;}
+    100% {-moz-transform: translateX(101%);}
+}
+
+@-o-keyframes slide-out {
+    0% {-o-transform: none;}
+    100% {-o-transform: translateX(101%);}
+}
+
+@keyframes slide-out {
+    0% {transform: none;}
+    100% {transform: translateX(101%);}
+}
+
+
+
+@-webkit-keyframes slide-in {
+    0% {-webkit-transform: translateX(-101%);}
+    100% {-webkit-transform: none;}
+}
+
+@-moz-keyframes slide-in {
+    0% {-moz-transform: translateX(-101%);}
+    100% {-moz-transform: none;}
+}
+
+@-o-keyframes slide-in {
+    0% {-o-transform: translateX(-101%);}
+    100% {-o-transform: none;}
+}
+
+@keyframes slide-in {
+    0% {transform: translateX(-101%);}
+    100% {transform: none;}
+}

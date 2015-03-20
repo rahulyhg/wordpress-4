@@ -1,0 +1,249 @@
+@import "compass";
+@import "mixins";
+
+// temporary selector
+.page-template-template-shop-php{
+// temporary selector
+
+    #page{
+        background: #0f0f10;
+    }
+
+    .content, .masonry, .masonry__pagination{
+        background: transparent !important;
+    }
+
+}
+
+/*----------------------------------------*\
+    $PRODUCT-ARTICLE
+\*----------------------------------------*/
+
+.article--product{
+    position: relative;
+    background: transparent;
+}
+
+.product__link{
+    height: 100%;
+    text-decoration: none;
+}
+
+.woocommerce a.added_to_cart, .woocommerce-page a.added_to_cart{
+    position:  absolute;
+    right: 24px;
+    bottom: 24px;
+
+    @include media(to hand) {
+        right: 48px;
+        bottom: 12px;
+    }
+}
+
+
+
+    .product__container{
+        padding: 12px;
+
+        .product__add-to-cart, form.cart{
+            position: absolute;
+            right: 12px;
+            bottom: 12px;
+        }        
+    }
+
+        .woocommerce button.button.alt.single_add_to_cart_button{
+            background: none;
+            border: 0;
+            color: black;
+            box-shadow: none;
+
+            &:before{
+                content: none;
+            }
+        }
+
+        .product__title{
+            font-weight: normal;
+            @include font-size(26px);
+            text-transform: uppercase;
+        }
+
+        .product__price{
+            font-family: "Open Sans", sans-serif;
+            @include font-size(16px);
+            font-weight: bold;
+        }
+
+    //Product Badges -- On Sale & Out of Stock
+    .product__badge {
+        position: absolute;
+        top: 24px;
+        right: 0;
+        z-index: 5;
+        padding: 6px 12px;
+
+        background-color: $accent_color;
+
+        font-family: "Roboto", sans-serif;
+        font-size: 13px;
+        font-weight:500;
+        text-transform: uppercase;
+    }
+
+    .product__out-of-stock {
+        background-color:$dark;
+        // color:white;
+        font-weight:300;
+    }
+
+    .article--product.outofstock .product__image-wrapper {
+        opacity:0.5;
+    }
+
+
+
+    .product__image-wrapper{  
+        position: relative;
+
+        img{
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: auto;
+        }
+    }
+
+.btn--out-of-stock{
+    display: inline-block;
+    text-transform: uppercase;
+    text-decoration: underline;
+    font-weight: bold;
+    margin-top: 10px;
+    font-family: "Josefin Slab", sans-serif;
+    color: #0f0f10;
+}
+
+@include media(from lap) {
+    .product__container{        
+        padding: 0;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        text-align: center;
+        z-index: 3;
+        background-color: transparent;
+
+        @include transition(all .3s linear);
+        @include opacity(0);                
+
+        .product__add-to-cart, form.cart{
+            right: auto;
+            left: 24px;
+            bottom: 24px;    
+        }
+
+        .product__add-to-cart{
+            text-decoration: none;
+
+            &:after{
+                content: "Add to cart";
+                margin-left: 5px;
+                @include opacity(0);
+                @include transform(translateX(-25px));
+                @include transition(all 0.2s linear);
+                font-family: $alt-font-family;
+                @include font-size(12px);
+                text-transform: uppercase;
+            }
+
+            &:hover:after{
+                @include opacity(1);
+                @include transform(translateX(0));                
+            }
+        }
+    }
+
+    .product__badge {
+        top: 0;        
+    }
+
+    .btn--out-of-stock{
+        position: absolute;
+        bottom: 24px;
+        left: 24px;
+        right: 24px;
+    }
+
+    /**
+     * On hover, the title, price and "Add to cart" appear
+     */
+
+    .article--product:hover .product__container{
+        @include opacity(1);
+        @include transition(all .3s linear);
+        background-color: rgba($accent_color, 0.7);
+    }    
+}
+
+
+
+
+
+/*----------------------------------------*\
+    $CART ICON
+\*----------------------------------------*/
+.cart-button__wrapper{
+    font-family: $alt-font-family;
+    font-weight:300;
+    z-index:100;
+    position: relative;    
+}
+
+.cart-button{
+    color:white;
+    cursor: pointer;
+    background:rgba(0,0,0,0.8);
+    width:100%;
+    padding-left:0;
+    text-align:center;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    padding-right: 0;
+
+    i {
+        margin-left: 10px;
+        text-align: center;
+        font-size: 19px;
+        line-height: 35px;
+    }    
+
+    ul {
+        height: 0;
+        display: block;
+        background-color:black;
+        background-color:rgba(0,0,0,0.8); 
+        position:absolute;
+        top: 100%;
+        right:0;
+        margin-bottom:0;
+        width:100%;
+        z-index:100;
+        @include transition(all .15s linear);
+        @include opacity(0);
+        overflow: hidden;
+    }
+}
+
+@include media(from hand) {
+    .cart-button__wrapper{    
+        position:fixed;
+        bottom: 24px;
+        right: 24px;
+    }
+}
+
+
